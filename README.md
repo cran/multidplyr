@@ -9,7 +9,7 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/tidyverse/multidplyr/workflows/R-CMD-check/badge.svg)](https://github.com/tidyverse/multidplyr/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/tidyverse/multidplyr/branch/master/graph/badge.svg)](https://codecov.io/gh/tidyverse/multidplyr?branch=master)
+coverage](https://codecov.io/gh/tidyverse/multidplyr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidyverse/multidplyr?branch=main)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/multidplyr)](https://cran.r-project.org/package=multidplyr)
 <!-- badges: end -->
@@ -26,11 +26,11 @@ Matloff and [distributedR](https://github.com/vertica/DistributedR) by
 the Vertica Analytics team.
 
 Due to the overhead associated with communicating between the nodes, you
-won’t see much performance improvement with simple operations on lless
+won’t see much performance improvement with simple operations on less
 than \~10 million observations, and you may want to instead try
 [dtplyr](https://dtplyr.tidyverse.org/), which uses
 [data.table](https://R-datatable.com/). multidplyr’s strength is found
-parallelsing calls to slower and more complex functions.
+parallelising calls to slower and more complex functions.
 
 (Note that unlike other packages in the tidyverse, multidplyr requires R
 3.5 or greater. We hope to relax this requirement [in the
@@ -38,7 +38,14 @@ future](https://github.com/traversc/qs/issues/11).)
 
 ## Installation
 
-To install from GitHub:
+You can install the released version of multidplyr from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("multidplyr")
+```
+
+And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -116,7 +123,7 @@ use `collect()` to bring the data back to the host session:
 flight_dest %>% 
   summarise(delay = mean(dep_delay, na.rm = TRUE), n = n()) %>% 
   collect()
-#> # A tibble: 105 x 3
+#> # A tibble: 105 × 3
 #>    dest  delay     n
 #>    <chr> <dbl> <int>
 #>  1 ABQ    13.7   254

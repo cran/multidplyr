@@ -2,7 +2,7 @@
 #'
 #' Partitioning ensures that all observations in a group end up on the same
 #' worker. To try and keep the observations on each worker balanced,
-#' `partition()` uses a greedy algorithm that iteratively assign each group to
+#' `partition()` uses a greedy algorithm that iteratively assigns each group to
 #' the worker that currently has the fewest rows.
 #'
 #' @param data Dataset to partition, typically grouped. When grouped, all
@@ -221,8 +221,7 @@ collect.multidplyr_party_df <- function(.data, ...) {
 #' @importFrom dplyr pull
 #' @export
 pull.multidplyr_party_df <- function(.data, var = -1) {
-  expr <- enquo(var)
-  var <- dplyr:::find_var(expr, tbl_vars(.data))
+  var <- tidyselect::vars_pull(tbl_vars(.data), {{ var }})
 
   .data <- ungroup(.data)
   .data <- select(.data, !!sym(var))
