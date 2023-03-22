@@ -1,3 +1,7 @@
+# multidplyr 0.1.3
+
+* Fix for R CMD check failure.
+
 # multidplyr 0.1.2
 
 * `cluster_call()` gains a `simplify` argument - use this to request that
