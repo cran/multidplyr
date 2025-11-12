@@ -15,7 +15,7 @@
       4     4
       5     5
       6     6
-      # ... with 14 more rows
+      # i 14 more rows
 
 ---
 
@@ -35,5 +35,29 @@
       4     4
       5     5
       6     6
-      # ... with 14 more rows
+      # i 14 more rows
+
+# name must be data frame with same names
+
+    Code
+      party_df(cl, "x")
+    Condition
+      Error in `party_df()`:
+      ! `x` does not exist on all workers
+
+---
+
+    Code
+      party_df(cl, "x")
+    Condition
+      Error in `party_df()`:
+      ! `x` is not a data frame on all workers
+
+---
+
+    Code
+      party_df(cl, "x")
+    Condition
+      Error in `party_df()`:
+      ! `x` does not have the same names on all workers
 

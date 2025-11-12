@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 set.seed(1014)
 
@@ -67,7 +67,7 @@ nrow(common_dest)
 by_dest <- common_dest %>% partition(cluster)
 by_dest
 
-## ---- message = FALSE---------------------------------------------------------
+## ----message = FALSE----------------------------------------------------------
 cluster_library(cluster, "mgcv")
 system.time({
   models <- by_dest %>% 

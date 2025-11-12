@@ -1,3 +1,7 @@
+# multidplyr 0.1.4
+
+* Switch to qs2, as qs is being archived (@traversc, #159).
+
 # multidplyr 0.1.3
 
 * Fix for R CMD check failure.

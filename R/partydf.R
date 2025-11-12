@@ -79,7 +79,7 @@ worker_id <- function(data, cluster) {
 #' @export
 #' @examples
 #' # If a real example, you might spread file names across the clusters
-#' # and read in using data.table::fread()/vroom::vroom()/qs::qread().
+#' # and read in using data.table::fread()/vroom::vroom()/qs2::qs_read().
 #' cl <- default_cluster()
 #' cluster_send(cl[1], n <- 10)
 #' cluster_send(cl[2], n <- 15)
@@ -180,8 +180,9 @@ head.multidplyr_party_df <- function(x, n = 6L, ...) {
 
     pieces[[i]] <- head_i
     left <- left - nrow(head_i)
-    if (left == 0)
+    if (left == 0) {
       break
+    }
   }
 
   dplyr::bind_rows(pieces)
@@ -197,9 +198,16 @@ print.multidplyr_party_df <- function(x, ..., n = NULL, width = NULL) {
   }
 
   shards <- shard_rows(x)
-  cat("Shards: ", length(shards),
-    " [", big_mark(min(shards)), "--", big_mark(max(shards)), " rows]\n",
-    sep = "")
+  cat(
+    "Shards: ",
+    length(shards),
+    " [",
+    big_mark(min(shards)),
+    "--",
+    big_mark(max(shards)),
+    " rows]\n",
+    sep = ""
+  )
   cat("\n")
   print(tibble::trunc_mat(x, n = 6, width = width))
 
